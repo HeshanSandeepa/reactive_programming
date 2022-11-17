@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">RXJavaDemo</string>
+    <string name="username">User Name</string>
+    <string name="search">Search</string>
+</resources>

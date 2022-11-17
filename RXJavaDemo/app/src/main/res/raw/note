@@ -1,0 +1,21 @@
+01. Memory leak
+
+When each object is allocated some memory & when that memory is not de-allocated, memory leaks occurs.
+This cause, poor app performance & crashes.
+
+Detect memory leaks
+Google Console, Crashes with  OutOfMemoryException, LeakCanery
+
+Avoid Memory leaks
+Mostly take care about context
+Avoid inner classes, static context
+
+02. The 3 O’s of RxJava Core
+
+Observable - emits items ( stream )
+Observer - consumes those items
+Operator - Emissions from Observable objects can further be modified, transformed, and manipulated by chaining Operator calls.
+
+
+
+https://levelup.gitconnected.com/how-i-got-in-to-amazon-microsoft-google-all-from-studying-these-resources-31724508ce0e
