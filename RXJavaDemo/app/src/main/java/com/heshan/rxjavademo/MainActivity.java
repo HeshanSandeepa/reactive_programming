@@ -1,6 +1,7 @@
 package com.heshan.rxjavademo;
 
 import android.os.Bundle;
+import android.os.Looper;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -41,7 +42,15 @@ public class MainActivity extends AppCompatActivity {
             @Override public void onClick(View v) {
                 final String username = editTextUsername.getText().toString();
                 if (!TextUtils.isEmpty(username)) {
-                    getStarredRepos(username);
+
+                    Thread thread = new Thread(() -> {
+                        try  {
+                            getStarredRepos("HeshanSandeepa");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    });
+                    thread.start();
                 }
             }
         });
@@ -58,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     private void getStarredRepos(String username) {
         subscription = GitHubClient.getInstance()
                 .getStarredRepos(username)
-                .subscribeOn(Schedulers.immediate())
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<List<GitHubRepo>>() {
                     @Override public void onCompleted() {
@@ -72,7 +81,15 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override public void onNext(List<GitHubRepo> gitHubRepos) {
                         Log.d(TAG, "In onNext()");
-                        adapter.setGitHubRepos(gitHubRepos);
+
+                        MainActivity.this.runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                adapter.setGitHubRepos(gitHubRepos);
+
+                            }
+                        });
+
                     }
                 });
     }

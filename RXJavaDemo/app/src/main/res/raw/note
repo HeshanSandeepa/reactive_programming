@@ -1,3 +1,7 @@
+
+
+
+
 01. Memory leak
 
 When each object is allocated some memory & when that memory is not de-allocated, memory leaks occurs.
@@ -12,10 +16,19 @@ Avoid inner classes, static context
 
 02. The 3 O’s of RxJava Core
 
+RxJava is a library for composing asynchronous streams of real-time data and event-based programs
+by using observable sequences in a Reactive Programming style.
+
 Observable - emits items ( stream )
 Observer - consumes those items
 Operator - Emissions from Observable objects can further be modified, transformed, and manipulated by chaining Operator calls.
 
+03. Benefits of using RxJava
+
+Solves the problem of call-back hell.
+Easy threading
+Multiple operator makes it highly flexible
+Easy error handling
 
 
 https://levelup.gitconnected.com/how-i-got-in-to-amazon-microsoft-google-all-from-studying-these-resources-31724508ce0e
